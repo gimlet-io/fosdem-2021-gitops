@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fosdem-2021-bugfix-123
+  namespace: default
+  labels:
+    helm.sh/chart: onechart-0.10.0
+    app.kubernetes.io/name: onechart
+    app.kubernetes.io/instance: fosdem-2021-bugfix-123
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: onechart
+      app.kubernetes.io/instance: fosdem-2021-bugfix-123
+  template:
+    metadata:
+      annotations:
+        checksum/config: 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+      labels:
+        app.kubernetes.io/name: onechart
+        app.kubernetes.io/instance: fosdem-2021-bugfix-123
+    spec:
+      securityContext:
+        fsGroup: 999
+      containers:
+        - name: fosdem-2021-bugfix-123
+          securityContext:
+            {}
+          image: "ghcr.io/gimlet-io/fosdem-2021:66596a82ad1f5ef1cde331bbb432497acac9f777"
+          imagePullPolicy: 
+          envFrom:
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          volumeMounts:
+          resources:
+            limits:
+              cpu: 200m
+              memory: 200Mi
+            requests:
+              cpu: 200m
+              memory: 200Mi
+      volumes:
