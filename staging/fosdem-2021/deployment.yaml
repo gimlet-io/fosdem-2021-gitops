@@ -3,11 +3,6 @@ kind: Deployment
 metadata:
   name: fosdem-2021
   namespace: default
-  labels:
-    helm.sh/chart: onechart-0.10.0
-    app.kubernetes.io/name: onechart
-    app.kubernetes.io/instance: fosdem-2021
-    app.kubernetes.io/managed-by: Helm
 spec:
   replicas: 1
   selector:
@@ -16,8 +11,6 @@ spec:
       app.kubernetes.io/instance: fosdem-2021
   template:
     metadata:
-      annotations:
-        checksum/config: 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
       labels:
         app.kubernetes.io/name: onechart
         app.kubernetes.io/instance: fosdem-2021
@@ -26,16 +19,11 @@ spec:
         fsGroup: 999
       containers:
         - name: fosdem-2021
-          securityContext:
-            {}
-          image: "ghcr.io/gimlet-io/fosdem-2021:0d4601b55aeedc9ab5a9f60363132fa9a63d301d"
-          imagePullPolicy: 
-          envFrom:
+          image: "ghcr.io/gimlet-io/fosdem-2021:b83af55ab8c4f20ff418b5d0cdbe3f4aeb92e6e7"
           ports:
             - name: http
               containerPort: 80
               protocol: TCP
-          volumeMounts:
           resources:
             limits:
               cpu: 200m
@@ -43,4 +31,3 @@ spec:
             requests:
               cpu: 200m
               memory: 200Mi
-      volumes:
