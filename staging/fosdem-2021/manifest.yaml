@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: github-actions-example
+  name: fosdem-2021
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: onechart
-      app.kubernetes.io/instance: github-actions-example
+      app.kubernetes.io/instance: fosdem-2021
   template:
     metadata:
       labels:
         app.kubernetes.io/name: onechart
-        app.kubernetes.io/instance: github-actions-example
+        app.kubernetes.io/instance: fosdem-2021
     spec:
       securityContext:
         fsGroup: 999
       containers:
-        - name: github-actions-example
-          image: "ghcr.io/gimlet-io/fosdem-2021:a15eaaf1f0505bc4e1f5d92827492fbe2a72ed18"
+        - name: fosdem-2021
+          image: "ghcr.io/gimlet-io/fosdem-2021:605d6ef51c3899794079ec8cc537ee0dabfa7d97"
           ports:
             - name: http
               containerPort: 80
