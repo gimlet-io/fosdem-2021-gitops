@@ -19,7 +19,7 @@ spec:
         fsGroup: 999
       containers:
         - name: fosdem-2021
-          image: "ghcr.io/gimlet-io/fosdem-2021:c085d0dcb19827abbe22d766f04545c171051766"
+          image: "ghcr.io/gimlet-io/fosdem-2021:0d4601b55aeedc9ab5a9f60363132fa9a63d301d"
           ports:
             - name: http
               containerPort: 80
