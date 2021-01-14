@@ -28,7 +28,7 @@ spec:
         - name: fosdem-2021-bugfix-123
           securityContext:
             {}
-          image: "ghcr.io/gimlet-io/fosdem-2021:66596a82ad1f5ef1cde331bbb432497acac9f777"
+          image: "ghcr.io/gimlet-io/fosdem-2021:ae6637affa72caa28ca63e70c8592a7c8bd527e5"
           imagePullPolicy: 
           envFrom:
           ports:
