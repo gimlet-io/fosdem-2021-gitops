@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fosdem-2021
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: onechart
+      app.kubernetes.io/instance: fosdem-2021
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: onechart
+        app.kubernetes.io/instance: fosdem-2021
+    spec:
+      securityContext:
+        fsGroup: 999
+      containers:
+        - name: fosdem-2021
+          image: "ghcr.io/gimlet-io/fosdem-2021:0d4601b55aeedc9ab5a9f60363132fa9a63d301d"
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 200m
+              memory: 200Mi
+            requests:
+              cpu: 200m
+              memory: 200Mi
