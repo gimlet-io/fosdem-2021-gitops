@@ -3,6 +3,11 @@ kind: Service
 metadata:
   name: fosdem-2021
   namespace: default
+  labels:
+    helm.sh/chart: onechart-0.10.0
+    app.kubernetes.io/name: onechart
+    app.kubernetes.io/instance: fosdem-2021
+    app.kubernetes.io/managed-by: Helm
 spec:
   type: ClusterIP
   ports:
